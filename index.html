@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Color & List</title>
+</head>
+<body>
+
+ 
+  <input type="text" id="colorBox" placeholder="Type a color">
+  <input type="text" id="nameBox" placeholder="Type names with comma">
+  
+  <ul id="list"></ul>
+
+  <script>
+    document.getElementById("colorBox").addEventListener("input", function() {
+      let c = this.value.trim();
+      if (c === "random") {
+        c = "#" + Math.floor(Math.random() * 16777215).toString(16);
+      }
+      document.body.style.backgroundColor = c;
+    });
+
+    document.getElementById("nameBox").addEventListener("input", function() {
+      let text = this.value.split(",");
+      let ul = document.getElementById("list");
+      ul.innerHTML = "";
+      text.forEach(function(item) {
+        if (item.trim() !== "") {
+          let li = document.createElement("li");
+          li.textContent = item.trim();
+          ul.appendChild(li);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
